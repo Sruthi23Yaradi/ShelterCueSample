@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rescue Agency Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .message {
+            display: none;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #dff0d8;
+            border: 1px solid #d0e9c6;
+            border-radius: 3px;
+            color: #3c763d;
+        }
+    </style>
+    <script>
+        function submitForm() {
+            var form = document.getElementById('registrationForm');
+            var message = document.getElementById('message');
+            // Simulate form submission (in a real application, this would be handled by backend logic)
+            // For demonstration purposes, just showing a success message
+            message.style.display = 'block';
+            setTimeout(function() {
+                message.style.display = 'none';
+                form.reset();
+            }, 3000); // Reset form and hide message after 3 seconds
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Rescue Agency Registration</h2>
+        <form id="registrationForm" onsubmit="event.preventDefault(); submitForm();">
+            <label for="agencyName">Agency Name:</label>
+            <input type="text" id="agencyName" name="agencyName" required>
+            
+            <label for="contactName">Contact Person's Name:</label>
+            <input type="text" id="contactName" name="contactName" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="state">State:</label>
+            <input type="text" id="state" name="state" required>
+
+            <label for="zip">Zip Code:</label>
+            <input type="text" id="zip" name="zip" pattern="[0-9]{5}" required>
+
+            <input type="submit" value="Register">
+        </form>
+        <div id="message" class="message">Details saved successfully!</div>
+    </div>
+</body>
+</html>

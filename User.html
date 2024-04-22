@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ShelterCue</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            text-align: center;
+        }
+        label {
+            display: inline-block;
+            margin: 10px;
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            display: none;
+        }
+        input[type="radio"] + img {
+            border: 2px solid transparent;
+        }
+        input[type="radio"]:checked + img {
+            border-color: blue;
+        }
+    </style>
+    <script>
+        // Function to save the selected option to localStorage
+        function savePreference() {
+            var selectedOption = document.querySelector('input[name="preference"]:checked').value;
+            localStorage.setItem('preference', selectedOption);
+            if (selectedOption === 'option1') {
+                window.location.href = 'old.html'; // Redirect to user.html
+            } else if (selectedOption === 'option2') {
+                window.location.href = 'naturalcalamity.html'; // Redirect to rescue.html
+            }
+        }
+
+
+        // Function to load the saved preference from localStorage
+        function loadPreference() {
+            var preference = localStorage.getItem('preference');
+            if (preference) {
+                document.getElementById('preference_' + preference).checked = true;
+            }
+        }
+    </script>
+</head>
+<body onload="loadPreference()">
+    <h1>ShelterCue</h1>
+    <img src="logo.jpg" alt="ShelterCue Logo" width="300">
+    <form>
+        <h4>Select your preference</h4>
+        <label for="preference_option1">
+            <input type="radio" id="preference_option1" name="preference" value="option1">
+            <img src="old.jpeg" alt="Option 1" width="200">
+        </label>
+        <label for="preference_option2">
+            <input type="radio" id="preference_option2" name="preference" value="option2">
+            <img src="calamities.jpeg" alt="Option 2" width="200">
+        </label>
+        <br>
+        <button type="button" onclick="savePreference()">Submit</button>
+    </form>
+</body>
+</html>
